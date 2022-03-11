@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin article model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Admin article model</h1>
+        <p>This class inherited from the frontend <code>Article</code>.</p>
+        <img class="image-view" src="images/blog/b-article-view-1.png" alt="Article model">
+        <p>
+          The <code>safe</code> rule applied to a <code>files</code> attribute does not perform any checks.
+          It only means that a value of form data can be assigned to the attribute.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>The <code>findBySearch</code> method searches for articles that contain a specified text in title.</p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>findToSelect</code> method returns a query to select all titles of articles.
+          The <code>asRaw</code> modifier sets the result as simple JavaScript objects.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>By default, a new article gets the "draft" status.</p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Photo processing</h4>
+        <p>
+          The <code>beforeValidate</code> handler is called before validation of a model.
+          You must call the asynchronous parent method first to event system to work properly.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>afterSave</code> handler is called after a successful saving.
+          The <code>insert</code> argument contains a flag that defines create or update a model by current action.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Asynchronous method <code>resolveFiles</code> finds models of uploaded files.
+          Identifiers are received in a <code>files</code> serialized array of form.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>createPhotos</code> method creates <code>Photo</code> models
+          for uploaded files and links them to the current article.
+          If you do not set a main article photo (<code>mainPhotoId</code>),
+          the first of created models will be assigned as the main.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Tag processing</h4>
+        <p>
+          A serialized list of tag ids that are associated with an article is sent form.
+          Method <code>validateTags</code> filters the empty and non-unique values,
+          breaks off the current relations and creates new ones from received list.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>resolveTag</code> method finds or creates
+          a new tag model by name and links it to the current article.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Article relations</h4>
+        <p>The <code>relAuthor</code> relation defines article's author.</p>
+        <p>The <code>relPhotos</code> relation defines article's photos.</p>
+        <p>The <code>relMainPhoto</code> relation defines the main photos of article.</p>
+        <p>
+          The <code>relComments</code> relation defines article's comments.
+          The last argument in the <code>hasMany</code> function responsible
+          for deleting comment's model at break of relations with article.
+        </p>
+        <p>
+          The <code>relTags</code> relation defines tags related to an article.
+          The <code>rel_article_tag</code> junction table is used to link.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

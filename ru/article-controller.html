@@ -1,0 +1,104 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контроллер статьи - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Контроллер статьи</h1>
+        <p>Класс <code>ArticleController</code> отвечает за вывод, поиск, сортировку и фильтрацию статей.</p>
+        <p class="filename">controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>actionIndex</code> выводит основной список статей.
+          Для сортировки и разбиения списка на страницы используется класс <code>areto/data/ActiveDataProvider</code>.
+          В параметре <code>query</code> задается запрос, который находит список опубликованных статей.
+        </p>
+        <p>
+          Для вывода статей в различном порядке, используйте параметр <code>sort</code>.
+          В свойстве <code>attrs</code> укажите атрибуты статьи, по которым доступна сортировка списка.
+          Для сортировки по умолчанию используйте <code>defaultOrder</code>.
+        </p>
+        <p>
+          Для удобства представления и снижения нагрузки в <code>ActiveDataProvider</code>
+          по умолчанию включено постраничное разбиение (10 элементов на страницу).
+          Используйте параметр <code>pageSize</code>, чтобы задать другой размер страницы.
+          Если требуется вывести весь список целиком, то установите <code>pagination: null</code>.
+        </p>
+        <p class="filename">controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>actionSearch</code> выводит список статей отфильтрованных по поисковому тексту.
+          Реализация аналогична методу <code>actionIndex</code> за исключением параметра <code>query</code>.
+          Пользовательский текст из GET-параметра <code>this.getQueryParam('text')</code>
+          передается аргументом в статический метод <code>Article.findBySearch</code>.
+        </p>
+        <p class="filename">controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>actionView</code> работает с отдельной статьей.
+          Если запрос приходит в формате POST (<code>isPost</code>), то обрабатывается
+          форма создания нового комментария.
+        </p>
+        <p>
+          Для создания нового комментария в объект класса <code>Comment</code>
+          загрузите данные формы <code>comment.load(this.getBodyParams())</code>.
+          Установите статью, к которой относится комментарий, и IP пользователя.
+        </p>
+        <p>
+          Если комментарий успешно сохранен, то пользователю выводится соответствующее сообщение (<code>setFlash</code>).
+          Сообщение записывается в сессию и однократно отобразится при следующей загрузке страницы.
+          Затем происходит перезагрузка страницы <code>this.redirect</code>, чтобы сбросить текущий POST запрос.
+          В случае провала сохранения, ошибки будут отражены на форме комментария.
+        </p>
+        <p class="filename">controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>renderView</code> отображает отдельную статью, указанную в аргументе <code>model</code>.
+          Комментарии, относящихся к статье, выводятся через <code>ActiveDataProvider</code>,
+          который формирует постраничное разбиение списка.
+        </p>
+        <p class="filename">controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>Метод <code>actionTagged</code> выводит список статей отфильтрованных по метке.</p>
+        <p>
+          Сначала нужно найти модель метки по ее названию, которое передается в параметре <code>tag</code> GET-запроса.
+          Создайте новую модель <code>Tag</code>, установите атрибут <code>name</code>.
+          Проверьте полученные данные. В случае отсутствия ошибок, создайте запрос поиска метки по имени.
+          Если метка найдена, то инициализируйте провайдер <code>ActiveDataProvider</code>,
+          где в качестве источника данных <code>query</code> укажите отношение <code>tag.relArticles()</code>,
+          возвращающее все статьи с данной меткой.
+        </p>
+        <p class="filename">controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Модель статьи - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Модель статьи</h1>
+        <p>Класс <code>Article</code> представляет модель статьи и объединяет другие сущности блога.</p>
+        <img class="image-view" src="../images/blog/f-article-view-1.png" alt="Просмотр статьи">
+        <p>
+          В модели публичной части блога не объявляется свойство <code>ATTRS</code>,
+          содержащее список сохраняемых атрибутов,
+          так как все изменения в статью будут вноситься через модуль администрирования.
+          В константы добавьте лишь название таблицы и строковые идентификаторы статусов:
+        </p>
+        <ul>
+          <li><code>draft</code> - статья в процессе редактирования и недоступна в публичной части.</li>
+          <li><code>published</code> - статья опубликована.</li>
+          <li><code>archived</code> - статья снята с публикации.</li>
+        </ul>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>Заголовок модели соответствует заголовку статьи.</p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>Методы для проверки статуса статьи.</p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Запросы выборки</h4>
+        <p>
+          Метод <code>findPublished</code> возвращает объект запроса всех опубликованных статей.
+          Также для каждой статьи будут запрошены связанные данные для отношений <code>mainPhoto, tags</code> (см. ниже).
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>findBySearch</code> расширяет запрос <code>findPublished</code> дополнительным фильтром
+          статей по заголовку, который должен содержать искомый текст.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Отношения модели</h4>
+        <p>
+          Методы, начинающиеся с префикса <code>rel</code>, определяют отношения данной модели с другими.
+          Отношение устанавливается через связь, которая описывается в возвращаемом
+          запросе <code>areto/db/ActiveQuery</code>.
+        </p>
+        <p>
+          Метод <code>relAuthor</code> определяет автора статьи.
+          Методы <code>hasOne, hasMany</code> указывают на возможное количество результатов в отношении.
+          В данном случае у статьи может быть только один автор.
+        </p>
+        <p>
+          Первый параметр (<code>User</code>) определяет класс модели, которая связывается со статьей.
+          Во втором параметре <code>[User.PK, 'authorId']</code> указываются атрибуты,
+          которые создают связь. От модели пользователя используется первичный ключ <code>User.PK</code>,
+          а от статьи атрибут <code>authorId</code>, в котором хранится идентификатор пользователя.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>relPhotos</code> возвращает запрос для выборки всех фотографий, связанных со статьей.
+          У статьи может быть множество фотографий, поэтому используется метод <code>hasMany</code>.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Главное фото, которое отображается в списке статей, определяется в отношении <code>relMainPhoto</code>.
+          Класс <code>Article</code> содержит атрибут <code>mainPhotoId</code>,
+          который хранит идентификатор модели класса <code>Photo</code>.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>relComments</code> определяет комменарии, которые имеют отношение к статье.
+          Дополнительный фильтр по статусу выдаст только одобренные комменарии для отображения в публичной части блога.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>relTags</code> выбирает метки, относящиеся к статье.
+          Каждая метка может быть связана с несколькими статьями, а каждая статья может содержать несколько меток.
+          Такой тип отношений называется «многие ко многим» и осуществляется через промежуточную таблицу.
+        </p>
+        <p>
+          В методе <code>hasMany</code> укажите связь модели <code>Tag</code> с полем промежуточной таблицы,
+          а в методе <code>viaTable</code> определите название таблицы связи <code>rel_article_tag</code> и
+          связь таблицы с моделью <code>Article</code>.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

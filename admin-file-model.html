@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin uploaded file model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Admin uploaded file model</h1>
+        <p>
+          The <code>File</code> model provides a file upload. It supports asynchronous uploading from web forms.
+          Downloaded files are not used directly, but only as a source of data in other models.
+        </p>
+        <p>
+          Disable <code>updatedAttr</code> attribute of <code>timestamp</code> behavior.
+          Downloaded files can not be edited, but only either deleted or used for re-saving in some models.
+        </p>
+        <p>The <code>STORE_DIR</code> constant creates an absolute path to the directory of file allocation.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>findExpired</code> method finds all files older than specified period.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Model title is formed from original file name and stored name.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>isImage</code> method recognizes a image file.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>getPath</code> method returns absolute path of a saved file.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>upload</code> method saves a file to a server, using the <code>multer</code> npm-module.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>generateStoreDir, generateFilename</code> methods create a directory and generate a file name to save.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>populateFileStats</code> method extracts values of a file and request.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>getFileStats</code> method returns data needed to validate a uploaded file.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>The <code>afterDelete</code> handler deletes a file from file system. It is called after the deletion of model.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

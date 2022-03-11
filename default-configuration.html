@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Default configuration - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Default configuration</h1>
+        <p>
+          Create <code>config</code> directory in the project root.
+          It will contain the configuration files of application.
+        </p>
+        <p>
+          Create a basic configuration file <code>config/default.js</code>.
+          It contains a port of web server.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>
+          Basic configuration can be extended by using files that have the same name as
+          a value of variable environment NODE_ENV (eg development, production).
+        </p>
+        <p>Create the <code>config/development.js</code> file.</p>
+        <p class="filename">config/development.js</p>
+        <pre class="code"></pre>
+        <p>
+          Now the web server will run on port <code>3000</code>,
+          if the environment variable is set to <code>NODE_ENV=development</code>.
+          In another case, the server will run on port <code>8888</code> from the base configuration.
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

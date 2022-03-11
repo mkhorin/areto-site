@@ -1,0 +1,63 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Доступ к модулю администрирования - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Доступ к модулю администрирования</h1>
+        <p>
+          Для защиты модуля администрирования от неавторизованного доступа,
+          в объектах класса <code>Admin</code> применяется фильтр <code>areto/filters/AccessControl</code>.
+          Фильтр базируется на правилах, определяемых в параметре <code>rules</code>.
+          Каждый элемент правила инициализирует объект класса <code>areto/filters/AccessRule</code>.
+        </p>
+        <p>
+          Свойство <code>allow</code> определяет тип правила -
+          разрешающее (<code>true</code>) или запрещающее (<code>false</code>).
+          Свойство <code>permissions</code> содержит массив элементов прав доступа (разрешений и ролей),
+          для которых выполняется правило.
+          Помимо элементов доступа определенных в <code>rbac/items</code>, доступны две встроенные роли:
+        </p>
+        <ul>
+          <li><code>?</code> - обозначает гостевого (анонимного) пользователя.</li>
+          <li><code>@</code> - обозначает залогиненного пользователя.</li>
+        </ul>
+        <p class="filename">module/admin/module.js</p>
+        <pre class="code"></pre>
+        <p>
+          Если пользователь анонимен, то фильтр переадресует его на форму входа.
+          Для залогиненного пользователя, который не имеет права доступа,
+          отображается сообщение «Доступ запрещен».
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

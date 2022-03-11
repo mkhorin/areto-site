@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>User model</h1>
+        <p>
+          User model class inherits <code>User</code> class that provides authentication of user interface,
+          and <code>areto/db/ActiveRecord</code> class that manages database.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>Define static properties of a class in <code>getConstants</code> method.</p>
+        <ul>
+          <li><code>TABLE</code> - is name of table that stores records.</li>
+          <li><code>ATTRS</code> - this model attributes to be stored in database.
+            The <code>_id</code> attribute is used as a model identifier.
+            It is created by MongoDB for each new record.
+          </li>
+        </ul>
+        <p>
+          Static properties are available both through the class itself, and an instance:
+          <code>User.TABLE === (new User).TABLE === (new User).constructor.TABLE</code>.
+        </p>
+        <p>
+          The <code>init</code> method is used to initialize static properties.
+          It is called immediately after class definition.
+          Its argument is the current file module Node.js:
+          <code>module.exports.init(module)</code>.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>findIdentity</code> method searches a database
+          record by ID <code>id</code> and status (<code>status === 'active'</code>).
+          It is necessary to search for authenticated user according to data stored in session.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>init</code> method is called immediately after you create a model.
+          It provides an initialization of attribute values.
+          If you override it, then call a parent class method to work properly <code>super.init</code>.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>getTitle</code> method returns the name of model to be displayed in different cases.
+          By default, it uses model ID.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>isActive, isBanned</code> methods used to check the current status of user.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>getAssignments</code> method returns a user role stored in the <code>role</code> attribute
+          that is needed to authorize access to resources of blog.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>beforeSave</code> method is called before saving a model.
+          If you override it, then you must call the <code>super.beforeSave()</code> parent method.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The last couple of methods manage user password.
+          To do this, connect <code>areto/helper/Security</code> helper class after <code>User</code> initialization.
+          Only <b>sha1</b> password hash is stored in database.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

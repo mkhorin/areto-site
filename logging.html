@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logging - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Logging</h1>
+        <p>
+          Logger component provides logging for the Areto framework.
+          It is created as an instance of the <code>areto/log/Logger</code> class.
+        </p>
+        <p>
+          Add the <code>logger</code> component in the application configuration.
+          Usually the logger is placed on the first place among components.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>level</code> property contains maximum level of stored logs.
+        </p>
+        <p>
+          Typical levels of logging: <code>trace, debug, info, warning, error, fatal</code>.
+          Each level includes all following ones.
+          For example, if you set the <code>info</code> level,
+          then a log will be kept with following types: <code>info, warning, error, fatal</code>.
+          And if you set the <code>trace</code> level, it will be stored in general, all logs.
+        </p>
+        <p>
+          The optimal level for development is <code>trace</code>.
+          It is set in the <code>development</code> configuration file.
+        </p>
+        <p class="filename">config/development.js</p>
+        <pre class="code"></pre>
+        <p>
+          By default, the logs are stored as text files to the <code>log</code> directory of the project root
+          and are displayed in server console.
+          Log rotation occurs when file size reaches limit (default is 2 Mb).
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

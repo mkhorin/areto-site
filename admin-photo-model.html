@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin photo model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Admin photo model</h1>
+        <p>This class inherited from the <code>Photo</code> of blog frontend.</p>
+        <p>The photo model contains three attributes:</p>
+        <ul>
+          <li>the first attribute is a title containing the description of photo;</li>
+          <li>the second attribute is a name of image file;</li>
+          <li>the third attribute is a link to the article, which owns photo.</li>
+        </ul>
+        <img class="image-view" src="images/blog/b-photo-view.png" alt="Photo model">
+        <p>
+          Images from users can be large and have different types.
+          There is no need to store files in original state.
+          Therefore, images will be converted into a common format.
+          To do this, use <code>ImageConverter</code> behavior.
+          Its incoming data is <code>File</code> model describing uploaded file.
+          The <code>size</code> property of the behavior defines maximum height or width of picture scale.
+        </p>
+        <p>
+          In addition to the full image, you need to display previews of various sizes.
+          The best way is to create separate files for each thumbnail size.
+          Use <code>neededThumbs</code> property that contains a list of the required dimensions.
+        </p>
+        <p>
+          To protect a copyright, or create unique photos, use a watermark.
+          It will automatically be applied to each image.
+          Set an image size and a corresponding watermark file in <code>watermark</code> property.
+        </p>
+        <p>
+          Files can be given for a direct link as static resources or only after verification of access rights.
+          In the case of restricted access converted clear images are placed in a private part of a website
+          (<code>storeDir: path.join(__dirname, '../uploads/photos')</code>).
+          These sources are available in the admin module only.
+          But all watermarked thumbnails placed in the frontend resources
+          (<code>thumbDir: path.join(__dirname, '../../../web/photos')</code>).
+        </p>
+        <p>The <code>filenameAttr</code> property defines a model attribute that stores file name.</p>
+        <p class="filename">module/admin/model/Photo.js</p>
+        <pre class="code"></pre>
+        <p>The <code>relArticle</code> relation finds article related to a photo.</p>
+        <p class="filename">module/admin/model/Photo.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

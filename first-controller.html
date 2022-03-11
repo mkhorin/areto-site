@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First controller - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>First controller</h1>
+        <p>Areto framework uses MVC pattern (Model - View - Controller)
+          popular among web applications for interaction between different parts of app.
+        </p>
+        <h4>Default Controller</h4>
+        <p>Create <code>controllers</code> directory in the project root and
+          append <code>DefaultController.js</code> file.
+          Filename is the name for exported class.
+          Controller class inherits from the <code>area/base/Controller</code> framework class.
+        </p>
+        <p>Create <code>actionIndex</code> class method.
+          All controller methods with <code>action</code> prefix are defined as actions (handlers)
+          for respective routes.
+          For example, <code>actionNewPost</code> will be called when handling
+          at <code>http://localhost:3000/default/new-post</code>.
+        </p>
+        <p>The last line contains initialization of static class variables and bind to node module.</p>
+        <p class="filename">controller/DefaultController.js</p>
+        <pre class="code"></pre>
+        <h4>Server restart</h4>
+        <p>
+          Start web server.
+          You will see a welcome at <code>http://localhost:3000/default/index</code>.
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

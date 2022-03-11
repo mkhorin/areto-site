@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin base controller - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Admin base controller</h1>
+        <p>
+          It is convenient to have a common controller methods collected in a single class.
+          This purpose is served by the <code>module/admin/component/Controller.js</code>
+          base controller in the admin module.
+          The rest of module controllers inherit from it directly or indirectly.
+        </p>
+        <p>
+          The <code>components</code> module (application) directory contains classes
+          used in models, controllers and views.
+        </p>
+        <p class="filename">module/admin/component/Controller.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>getModel</code> method finds a object by ID passed in GET parameter.
+          The <code>getModelClass</code> method returns a model class.
+          The found model will be loaded together with relations, listed in the <code>relations</code> array.
+          If a model is not found, the method will throw a 404 error.
+        </p>
+        <p class="filename">module/admin/component/BaseController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>getReferrer</code> method returns address of previous page.
+          Address is retrieved from a request header or POST parameter.
+        </p>
+        <p class="filename">module/admin/component/BaseController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>redirectToReferrer</code> method forwards the current request to address obtained
+          from <code>url</code> argument or POST data.
+        </p>
+        <p class="filename">module/admin/component/BaseController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

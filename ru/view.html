@@ -1,0 +1,76 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Представление - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Представление</h1>
+        <p>Намного удобнее формировать HTML ответ в отдельных шаблонах, чем непосредственно в методе контроллера.</p>
+        <h4>Подключение шаблонизатора</h4>
+        <p>Добавьте в файл конфигурации секцию компонентов приложения и укажите в ней используемый шаблонизатор.</p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>
+          Создайте в корне проекта директорию <code>views</code>.
+          Здесь будут размещаться файлы шаблонов, отвечающих за HTML-разметку страниц.
+        </p>
+        <p>
+          Каждому контроллеру соответствует своя поддиректория в представлениях,
+          внутри которой находятся шаблоны действий.
+          Например, для контроллера <code>DefaultController</code> и действия <code>actionNewPost</code>
+          шаблон определяется в <code>views/default/new-post.ejs</code>
+        </p>
+        <p class="filename">views/default/index.ejs</p>
+        <pre class="code"></pre>
+        <p>Первая строчка - это подключение макета разметки страницы.</p>
+        <h4>Макет разметки</h4>
+        <p>
+          Макет разметки - это шаблон с общими элементами, которые формируют структуру страниц, обрамляют контент.
+          Обычно макеты выносятся в отдельный шаблон и размещаются в <code>views/_layouts/</code>.
+          Макет может включаться в другой макет, более общего уровня.
+        </p>
+        <p><code>&lt;%- body -%&gt;</code> - место, где будет размещен контент шаблона (или вложенного макета).</p>
+        <p class="filename">views/_layouts/content.ejs</p>
+        <pre class="code"></pre>
+        <p class="filename">views/_layouts/main.ejs</p>
+        <pre class="code"></pre>
+        <h4>Рендер шаблона</h4>
+        <p>
+          В методе <code>actionIndex</code> контроллера <code>DefaultController</code>
+          замените вывод сообщение на рендер соответствующего шаблона.
+          По умолчанию шаблон ищется в директории контроллера <code>views/default/</code>.
+        </p>
+        <p class="filename">controllers/DefaultController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

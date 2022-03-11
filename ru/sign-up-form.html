@@ -1,0 +1,81 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Форма регистрации - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Форма регистрации</h1>
+        <p>
+          Для обработки данных форм используются
+          классы моделей унаследованные от <code>areto/base/Model</code>.
+        </p>
+        <p class="filename">model/SignUpForm.js</p>
+        <pre class="code"></pre>
+        <h4>Валидация модели</h4>
+        <p>
+          В массиве <code>RULES</code> описываются правила валидации модели.
+          Каждый элемент массива - это отдельное правило, которое применяется к указанным в нем атрибутам модели.
+          Само правило также представлено массивом, состоящим из нескольких элементов.
+        </p>
+        <ul>
+          <li>Первый элемент - это название атрибута, к которому применяется правило.
+            Может быть строкой или массивом строк в случае нескольких атрибутов.
+          </li>
+          <li>Второй элемент - это тип валидатора, который может быть внутренним валидатором фреймворка Areto,
+            названием метода текущего класса или отдельным классом.
+            Список некоторых встроенных валидаторов фреймворка:
+            <code>boolean, compare, date, email, exist, file, image, number, range, regexp, required, string, unique</code>.
+          </li>
+          <li>Третий элемент необязательный. Это объект, в котором передаются параметры для правила.</li>
+        </ul>
+        <p>
+          Правила применяются в порядке раположения.
+          По умолчанию, если атрибут не имеет значения или уже содержит ошибку из предыдущего правила, то его проверка пропускается.
+          Изменить данное поведение можно через параметры правила <code>skipOnError, skipOnAnyError, skipOnEmpty</code>.
+          Как пример в регистрации пользователя проверка на уникальность выбранного имени и email
+          происходит только при отсутствии любых ошибок в предыдущих правилах.
+        </p>
+        <p class="filename">model/SignUpForm.js</p>
+        <pre class="code"></pre>
+        <h4>Регистрация нового пользователя</h4>
+        <p>
+          Метод регистрации <code>signUp</code> проверяет данные, полученные с формы.
+          Если ошибок нет, то создается модель пользователя <code>User</code>,
+          инициализируется значениями формы и сохраняется в базе.
+          После успешного сохранения текущая сессия привязывается к новому пользователю.
+        </p>
+        <img class="image-view" src="../images/blog/f-auth-signup.png" alt="Форма регистрации пользователя">
+        <p class="filename">model/SignUpForm.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

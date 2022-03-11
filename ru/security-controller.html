@@ -1,0 +1,83 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контроллер безопасности - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Контроллер безопасности</h1>
+        <p>
+          Пользователь блога может зарегистроваться, авторизоваться или разлогиниться.
+          Все эти действия объединяются в отдельном контроллере безопасности.
+        </p>
+        <p class="filename">controllers/AuthController.js</p>
+        <pre class="code"></pre>
+        <h4>Капча</h4>
+        <p>
+          Помимо внутренних методов, действия контроллера могут определяться как отдельные классы.
+          Для этого используется константа <code>ACTIONS</code>.
+          Название свойства (<code>captcha</code>) определяет маршрут,
+          а значение - параметры, по которым создается экземпляр класса.
+          В данном случае, класс действие - это капча, защищающая от автоматической регистрации на сайте.
+        </p>
+        <p class="filename">controllers/AuthController.js</p>
+        <pre class="code"></pre>
+        <h4>Регистрация</h4>
+        <p class="alert alert-warning">
+          Регистрация и аутентификация доступны
+          только для анонимных (<code>isGuest</code>) пользователей.
+          Если пользователь залогинен, то ему отображается имя и ссылка выхода.
+        </p>
+        <p>
+          Для регистрации создается модель формы <code>SignUpForm</code>.
+          Если текущий запрос уже содержит данные <code>isPost</code>, то они загружаются в модель,
+          и вызывается метод регистрации, иначе же выводится пустая форма.
+        </p>
+        <p>
+          В случае ошибок регистрации, текущая форма отображается с соответствующими сообщениями.
+          Если же все завершилось успешно, то происходит переадресация  пользователя на страницу входа.
+        </p>
+        <p class="filename">controllers/AuthController.js</p>
+        <pre class="code"></pre>
+        <h4>Идентификация</h4>
+        <p>
+          Вход на сайт осуществляется через форму идентификации.
+          После успешной проверки пользователь пересылается на предыдущую страницу,
+          с которой был направлен на вход.
+        </p>
+        <p class="filename">controllers/AuthController.js</p>
+        <pre class="code"></pre>
+        <h4>Выход из системы</h4>
+        <p class="filename">controllers/AuthController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

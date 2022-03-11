@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Article controller - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Article controller</h1>
+        <p>
+          The <code>ArticleController</code> class is responsible for rendering, search, sort and filter articles.
+        </p>
+        <p class="filename">controller/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionIndex</code> method lists of articles.
+          Class <code>areto/data/ActiveDataProvider</code> is used for sorting and pagination.
+          Parameter <code>query</code> contains a query that searches for a list of published articles.
+        </p>
+        <p>
+          Use <code>sort</code> option to display a list of items in a different order.
+          Select article's attributes to be sorted in the <code>attrs</code> property.
+          For default sort order using <code>defaultOrder</code>.
+        </p>
+        <p>
+          By default, <code>ActiveDataProvider</code> class uses a pagination (10 items per page).
+          This is required for a eye-candy display and reduce database load.
+          Use <code>pageSize</code> parameter to select a different page size.
+          If you want the entire list, set <code>pagination: null</code>.
+        </p>
+        <p class="filename">controller/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionSearch</code> method lists articles filtered by the search text.
+          This implementation is similar to <code>actionIndex</code> method except <code>query</code> option.
+        </p>
+        <p class="filename">controller/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionView</code> method displays a single article.
+          If a request is received in POST format (<code>isPost</code>),
+          it is treated as a form to create a new comment.
+        </p>
+        <p>
+          To create a new comment, load a form data (<code>comment.load(this.getBodyParams())</code>)
+          to the <code>Comment</code> class object.
+          Set user's IP and an article that relates with a comment.
+        </p>
+        <p>
+          After a comment has been successfully saved, user will receive a message (<code>setFlash</code>).
+          The message is saved in the session and will be once displayed the next time page loads.
+          Finally, reload the page <code>this.redirect</code> to reset the current POST request.
+          If saving fails, a error will be shown on comment's form.
+        </p>
+        <p class="filename">controller/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>renderView</code> method displays an article contained in the <code>model</code> argument.
+          Comments related to article, are displayed via the <code>ActiveDataProvider</code> provider
+          that generates paged list.
+        </p>
+        <p class="filename">controller/ArticleController.js</p>
+        <pre class="code"></pre>
+        <p>The <code>actionTagged</code> method lists articles filtered by tag.</p>
+        <p>
+          First, find a model tag by its name. This name is passed in <code>tag</code> parameter.
+          Create a new <code>Tag</code> model and set the <code>name</code> attribute by request data.
+          Validate the data. If there are no errors, then create a search query by tag name.
+          If a tag model is found, initialize the <code>ActiveDataProvider</code> provider.
+          As a data source <code>query</code>, select <code>tag.relArticles()</code> relation
+          that returns articles with this tag.
+        </p>
+        <p class="filename">controller/ArticleController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

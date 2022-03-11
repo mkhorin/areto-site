@@ -1,0 +1,71 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Логирование - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Логирование</h1>
+        <p>
+          Во фреймворке Areto за ведение логов отвечает компонент <code>logger</code>,
+          который создается как экземпляр класса <code>areto/log/Logger</code>
+          при инициализации приложения.
+        </p>
+        <h4>Подключение</h4>
+        <p>
+          Добавьте в конфигурацию приложения компонент <code>logger</code>.
+          Обычно логер располагается первым среди компонентов.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>Свойство <code>level</code> отвечает за максимальный уровень сохраняемых сообщений.</p>
+        <p>
+          Типовые уровни логирования: <code>trace, debug, info, warning, error, fatal</code>.
+          Каждый  уровень включает все последующие.
+          Например, если задан уровень <code>info</code>, то в логи будут попадать сообщения
+          с типом <code>info, warning, error, fatal</code>.
+          А  если задан уровень <code>trace</code>, то вообще все сообщения.
+        </p>
+        <p>
+          Для разработки оптимальным будет уровень <code>trace</code>,
+          который можно прописать в конфиге <code>development</code>.
+        </p>
+        <p class="filename">config/development.js</p>
+        <pre class="code"></pre>
+        <h4>Хранилище логов</h4>
+        <p>
+          По умолчанию логи сохраняются как текстовые файлы в директорию <code>logs</code>
+          в корне проекта и отражаются в консоли сервера.
+          Ротация логов происходит при достижении лимита размера файла (по умолчанию 2 Мб).
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

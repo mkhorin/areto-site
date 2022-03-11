@@ -1,0 +1,118 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ модель статьи - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Админ модель статьи</h1>
+        <p>Класс модели наследуется от класса <code>Article</code> из публичной части.</p>
+        <img class="image-view" src="../images/blog/b-article-view-1.png" alt="Модель статьи">
+        <p>
+          Правило <code>safe</code>, которое применяется к атрибуту <code>files</code>, не производит никаких проверок,
+          но обозначает, что атрибуту может быть присвоено значение из данных формы.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>Метод <code>findBySearch</code> ищет статьи, у которых заголовок содержит указанный текст.</p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>findToSelect</code> возвращает запрос на выборку всех заголовков статей.
+          Модификатор <code>asRaw</code> устанавливает результатом выборки не массив моделей,
+          а массив простых JavaScript объектов.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>По умолчанию новая статья получает статус «Черновик».</p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+
+        <h4>Обработка фотографий</h4>
+        <p>
+          Обработчик <code>beforeValidate</code> вызывается перед валидацией модели.
+          Для корректной работы механизма событий необходимо вызвать асинхронный родительский метод.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Обработчик <code>afterSave</code> вызывается после успешного сохранения модели.
+          Аргумент <code>insert</code> содержит флажок, определяющий создание или редактирование модели текущим сохранением.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Асинхронный метод <code>resolveFiles</code> находит модели загруженных файлов,
+          соответствующие идентификаторам, переданным с формы в сериализованном массиве <code>files</code>.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Асинхронный метод <code>createPhotos</code> создает модели <code>Photo</code> из загруженных файлов
+          и связывает их с текущей статьей. Если не задано главное фото статьи <code>mainPhotoId</code>,
+          то им назначается первое из созданных фотографий.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+
+        <h4>Обработка меток</h4>
+        <p>
+          С формы приходит сериализованный список идентификаторов меток, которые связаны со статьей.
+          Метод <code>validateTags</code> фильтрует их от пустых и неуникальных значений,
+          разрывает текущие связи с метками и создает новые из полученного списка.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>resolveTag</code> находит или создает новую модель метки по указанному имени
+          и связывает ее с текущей статьей.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+
+        <h4>Отношения статьи</h4>
+        <p>Отношение <code>relAuthor</code> определяет автора статьи.</p>
+        <p>Отношение <code>relPhotos</code> определяет фотографии, относящиеся к статье.</p>
+        <p>Отношение <code>relMainPhoto</code> определяет главное фото статьи.</p>
+        <p>
+          Отношение <code>relComments</code> определяет комментарии, относящиеся к статье.
+          Последний аргумент в методе <code>hasMany</code> отвечает за удаление комментариев
+          при разрыве связи со статьей.
+        </p>
+        <p>
+          Отношение <code>relTags</code> определяет метки, относящиеся к статье.
+          Для связи используется промежуточная таблица <code>rel_article_tag</code>.
+        </p>
+        <p class="filename">module/admin/model/Article.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

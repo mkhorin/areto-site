@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in form - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Sign in form</h1>
+        <p>Login form receives a email / password and finds a appropriate user account in database.</p>
+        <img class="image-view" src="images/blog/f-auth-signin.png" alt="Sign-in form">
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+        <p>Validation of form needed to filter invalid input values.</p>
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+        <p><code>login</code> method checks form data.
+          If there are no errors it passes control to the <code>checkUser</code> method
+          that will search a user account in database.
+        </p>
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+        <p>
+          Look for user in <code>checkUser</code> by unique login. This is the email.
+          If user with passed email exists, you will create a <code>User</code> instance.
+          Its methods make further validate a user.
+        </p>
+        <p class="alert alert-warning">
+          Pay attention to the same server response in cases of a non-existent user email and wrong password.
+          This disables a brute force of existing login in database.
+        </p>
+        <p>
+          In addition to authentication, the model checks account status.
+          If a user is blocked, server will return a message login error.
+        </p>
+        <p>
+          After successful validation <code>webuser.login</code> binds the current user's session to found a model.
+          If the <code>rememberMe</code> flag is checked, the service data will be added to browser cookies.
+          It is required for automatic user log on to a given period (7 days).
+        </p>
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

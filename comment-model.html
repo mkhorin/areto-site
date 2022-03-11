@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Comment model</h1>
+        <p>
+          The <code>Comment</code> class defines a model of commentary to article.
+          Users can comment without authentication.
+          But any comment will be published after moderation only.
+        </p>
+        <p>Each comment has a few conditions:</p>
+        <ul>
+          <li><code>STATUS_PENDING</code> - comment is awaiting moderation.</li>
+          <li><code>STATUS_APPROVED</code> - approved comment.</li>
+          <li><code>STATUS_REJECTED</code> - rejected comment.</li>
+        </ul>
+        <img class="image-view" src="images/blog/f-article-view-2.png" alt="List of comments to article">
+        <p>
+          The <code>BEHAVIORS</code> static property contains behaviors that will be assigned to an instance of class.
+          Behavior defines a set of event handlers of target model and associated functionality.
+          In this case, the <code>timestamp</code> behavior sets the current time
+          to <code>createdAt, updatedAt</code> attributes when you create or edit a comment.
+        </p>
+        <p class="filename">model/Comment.js</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="images/blog/f-article-view-3.png" alt="Comment form">
+        <p>Every new comment has the status of «Pending moderator» by default.</p>
+        <p class="filename">model/Comment.js</p>
+        <pre class="code"></pre>
+        <p>Set content of comment as a model header.</p>
+        <p class="filename">model/Comment.js</p>
+        <pre class="code"></pre>
+        <p>Following methods are required to check a comment status.</p>
+        <p class="filename">model/Comment.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

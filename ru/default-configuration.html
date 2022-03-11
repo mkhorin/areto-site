@@ -1,0 +1,60 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Конфигурация по умолчанию - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Базовая конфигурация</h1>
+        <p>
+          Создайте в корне проекта директорию <code>config</code>.
+          В ней будут размещаться конфигурационные файлы приложения.
+        </p>
+        <p>
+          Создайте файл базовой конфигурации <code>config/default.js</code>, где укажите порт для веб-сервера.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>
+          Базовая конфигурация может быть расширена файлами,
+          одноименными со значением переменной окружения NODE_ENV (development, production).
+        </p>
+        <p>Создайте файл <code>config/development.js</code></p>
+        <p class="filename">config/development.js</p>
+        <pre class="code"></pre>
+        <p>
+          Теперь при старте node с переменной окружения <code>NODE_ENV=development</code>,
+          он будет запускать веб-сервер на 3000 порту,
+          а при другом значении <code>NODE_ENV</code> на порту 8888 из базовой конфигурации.
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

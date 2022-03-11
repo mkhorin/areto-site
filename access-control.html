@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Access control - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Access control</h1>
+        <p>
+          Areto Framework uses RBAC (role based access control) system of access rights.
+        </p>
+        <img class="image-view" src="images/blog/f-auth-signed.png" alt="Signed user in">
+        <p>
+          The following is an example of RBAC concept to remove a article.
+          First, create <code>deleteArticle</code> permission that describes protected functionality.
+          Create <code>editor</code> role that will be assigned to a user.
+          Add <code>deleteArticle</code> permission to role children.
+          To catch a user attempt to delete an article, add check for the <code>deleteArticle</code> permission
+          in controller's action.
+        </p>
+        <p>
+          Add <code>rbac</code> component in the application configuration.
+          Its implementation is contained in <code>areto/rbac/Manager</code> class.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>
+          By default file storage is used to keep the access settings.
+          Create <code>rbac/items</code> file with a list of roles and permissions.
+          A role may inherit a permission and other roles.
+          A permission can not inherit any role.
+        </p>
+        <p>
+          The <code>updateOwnArticle</code> permission closed by <code>author</code> rule.
+          It protect an article from updates by anyone except the author.
+          Add <code>updateArticle</code> permission and assign it to the role of blog editor to update any article.
+        </p>
+        <p>Roles contain a typical hierarchy of blog users:</p>
+        <ul>
+          <li><code>reader</code> - can view objects.</li>
+          <li><code>author</code> - inherits <code>reader</code> permissions and can edit their own articles.</li>
+          <li><code>editor</code> - inherits <code>author</code> permissions, and also can edit any article.</li>
+          <li><code>moderator</code> - inherits <code>author</code> permissions, and can also edit any comments.</li>
+          <li><code>admin</code> - inherits <code>editor, moderator</code> permissions.</li>
+        </ul>
+        <p class="filename">rbac/items.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>rbac/rules</code> file contains rules for permissions (and roles).
+          Rule locks a permission and opens only after access checks.
+        </p>
+        <p>
+          The <code>author</code> rule permits access only to the author of object.
+        </p>
+        <p class="filename">rbac/rules.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>rbac/assignments</code> file contains users with assigned roles.
+          In this case, the file is empty, because a user role is stored in <code>role</code> attribute of a user model.
+          It is overridden in <code>getAssignments</code> method of <code>model/User</code> class.
+        </p>
+        <p class="filename">rbac/assignments.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

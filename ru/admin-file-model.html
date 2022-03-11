@@ -1,0 +1,90 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ модель загружаемого файла - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Админ модель загружаемого файла</h1>
+        <p>
+          Модель <code>File</code> обеспечивает загрузку файлов на сервер.
+          Она реализована для поддержки асинхронной загрузки с форм.
+          Загруженные файлы не используются напрямую, а лишь служат источником данных в других моделях.
+        </p>
+        <p>
+          В поведение <code>timestamp</code> отключите атрибут <code>updatedAttr</code>.
+          Потому что однажды загруженный файл не может быть отредактирован, а только либо удален,
+          либо использован для пересохранения в какой-либо модели.
+        </p>
+        <p>
+          Константа <code>STORE_DIR</code> формирует абсолютный путь до директории размещения файлов.
+        </p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Метод <code>findExpired</code> ищет все файлы старше указанного периода.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Название модели формируется из исходного имени файла и имени хранения.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Метод <code>isImage</code> определяет является ли файл изображением.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Метод <code>getPath</code> возвращает полный путь до сохраненного файла.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>upload</code> сохраняет файл на сервер. Для это используется
+          npm-модуль <code>multer</code>.
+        </p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>
+          Методы <code>generateStoreDir</code> и <code>generateFilename</code> создают директорию и
+          генерируют имя, под которым файл будет сохранен на сервере.
+        </p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>populateFileStats</code> извлекает значения для атрибутов модели
+          из параметров файла и окружения.
+        </p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Метод <code>getFileStats</code> возвращает структуру необходимую для валидации загруженного файла.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+        <p>Обработчик <code>afterDelete</code> вызывается после удаления модели и удаляет файл из файловой системы.</p>
+        <p class="filename">module/admin/model/File.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

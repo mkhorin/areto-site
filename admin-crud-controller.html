@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin CRUD controller - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Admin CRUD controller</h1>
+        <p>
+          Administrative actions (create, view, update, delete) with objects of different classes are repeated
+          from one controller to another and can be assembled in a single base class.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionCreate</code> method is responsible for creating a new instance of the class
+          derived from <code>getModelClass</code>.
+          The <code>create</code> scenario, filtering validation rules, used to create a model.
+        </p>
+        <p>
+          GET-request renders empty model form.
+          POST-request loads attribute values, checks and if successful stores a new object.
+          If validation fails, then form is filled with obtained values and found errors.
+          After model saving action will redirect to the referral page.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionView</code> method displays a model.
+          It can be overridden by target controller to load a model together with relations.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionUpdate, actionCreate</code> methods differ validation scenario.
+          Furthermore, the <code>actionUpdate</code> method loads a model to update.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>actionDelete</code> method removes a model with identifier obtained from GET-request.
+          If AJAX request has been received, then, after deletion, a response will contain the identifier
+          of deleted object. Otherwise, there will redirect to previous page.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

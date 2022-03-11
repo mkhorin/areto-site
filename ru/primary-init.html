@@ -1,0 +1,58 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Первичная инициализация - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Первичная инициализация</h1>
+        <p>
+          В большинстве приложений после установки необходимо произвести начальную инициализацию базы данных.
+          Обычно в ней добавляют админстратора системы и другие параметры.
+        </p>
+        <p>Запуск первичной инициализации осуществляется отдельным скриптом.</p>
+        <p class="filename">console/init.js</p>
+        <pre class="code"></pre>
+        <p>
+          Создайте директорию <code>migrations</code> и добавьте в нее класс <code>Init</code>,
+          который создаст в базе данных пользователя <code>Administrator</code> с назначенной ролью <code>admin</code>.
+          В дальнейшем админстратор сможет войти в контрольный модуль приложения и завести других пользователей
+          через веб-интерфейс.
+        </p>
+        <p class="filename">migrations/Init.js</p>
+        <pre class="code"></pre>
+        <p>Запустить скрипт инициализации можно из командной строки, перейдя в директорию блога:</p>
+        <pre class="code"></pre>
+        <p>Либо запустив из Visual Studio Code конфигурацию Init:</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

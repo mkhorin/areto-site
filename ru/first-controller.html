@@ -1,0 +1,62 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Первый контроллер - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Первый контроллер</h1>
+        <p>
+          Для организации взаимодействия между различными частями приложения
+          фреймворк Areto использует популярный шаблон MVC (Модель – Вид – Контроллер).
+        </p>
+        <h4>Default Controller</h4>
+        <p>
+          Создайте в корне проекта директорию <code>controllers</code>
+          и добавьте в нее файл <code>DefaultController.js</code>.
+          Файл называется в соответствии с именем экспортируемого из него класса.
+          Определяемый класс контроллера наследуется от класса фреймворка <code>areto/base/Controller</code>.
+        </p>
+        <p>
+          Внутри класса создайте метод <code>actionIndex</code>.
+          Все методы контроллера с префиксом <b>action</b> определяются как действия (обработчики)
+          для соответствующих маршрутов.
+          Например, <code>actionNewPost</code> будет вызываться при обращении по адресу
+          <code>http://localhost:3000/default/new-post</code>
+        </p>
+        <p>Последняя строчка содержит инициализацию класса статическими переменными и привязка к модулю.</p>
+        <p class="filename">controllers/DefaultController.js</p>
+        <pre class="code"></pre>
+        <h4>Рестарт сервера</h4>
+        <p>Обратившись по адресу <code>http://localhost:3000/default/index</code>, вы увидите приветствие.</p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

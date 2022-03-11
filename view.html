@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>View - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>View</h1>
+        <p>
+          It is much easier to generate HTML response in separate templates, than directly in controller methods.
+        </p>
+        <h4>Adding a template</h4>
+        <p>Add a section of the application components in the configuration file and specify a view engine.</p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>
+          Create <code>views</code> directory in the project root.
+          There put template files containing HTML page layouts.
+        </p>
+        <p>
+          Each controller has its own subdirectory in the views that contains templates of action.
+          For example, <code>DefaultController</code> controller and <code>actionNewPost</code> action
+          has <code>view/template/default/new-post.ejs</code> template.
+        </p>
+        <p class="filename">view/template/default/index.ejs</p>
+        <pre class="code"></pre>
+        <p>The first line includes parent page layout.</p>
+        <h4>Layout</h4>
+        <p>
+          Layout is a template with common elements that form the structure of the page, frame content.
+          Typically, layouts are kept in a separate template file that is located in <code>view/template/_layouts/</code>.
+          A layout can be included to a top-level layout.
+        </p>
+        <p><code>&lt;%- body -%&gt;</code> - place the template content will be located (or nested layout).</p>
+
+        <p class="filename">view/template/_layouts/content.ejs</p>
+        <pre class="code"></pre>
+
+        <p class="filename">view/template/_layouts/main.ejs</p>
+        <pre class="code"></pre>
+
+        <h4>Template render</h4>
+        <p>
+          In <code>actionIndex</code> method of the <code>DefaultController</code>
+          replace the output message to render the appropriate template.
+          By default, the template is searched in <code>view/template/default/</code> directory controller.
+        </p>
+        <p class="filename">controller/DefaultController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

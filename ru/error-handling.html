@@ -1,0 +1,69 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Обработка ошибок - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Обработка ошибок</h1>
+        <p>
+          Наберите в браузере адрес <code>http://localhost:3000/bla-bla-bla</code>
+          или замените в <code>this.render('index')</code>
+          на несуществующий шаблон <code>this.render('bla-bla-bla')</code>.
+          В каждом случае вы увидите, как сервер реагирует на ошибки.
+        </p>
+        <img class="image-view" src="../images/blog/f-error-400.png" alt="Error page 400">
+        <h4>Подключение перехвата</h4>
+        <p>
+          Чтобы  перехватывать и обрабатывать подобные ситуации, добавьте в конфигурацию секцию <code>router</code>,
+          в которой укажите контроллер (по умолчанию <code>DefaultController</code>)
+          и действие (по умолчанию <code>error</code>), отвечающие за обработку ошибок.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <h4>Действие над ошибкой</h4>
+        <p>В контроллере определите метод <code>actionError</code>, который будет вызываться для обработки ошибки.</p>
+        <p class="filename">controllers/DefaultController.js</p>
+        <pre class="code"></pre>
+        <h4>Представление ошибок</h4>
+        <p>Для статусов ошибок <code>403, 404, 500</code> создайте шаблоны, которые будут отображаться пользователю.</p>
+        <p class="filename">views/default/403.ejs</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="../images/blog/f-error-404.png" alt="Error page 404"></div>
+        <p class="filename">views/default/404.ejs</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="../images/blog/f-error-500.png" alt="Error page 500">
+        <p class="filename">views/default/500.ejs</p>
+        <pre class="code"></pre>
+        <p>Теперь повторите ошибки из начала главы и увидите, как изменился ответ сервера.</p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

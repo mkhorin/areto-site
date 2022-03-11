@@ -1,0 +1,106 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Модель пользователя - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Модель пользователя</h1>
+        <p>
+          Класс модели пользователя <code>User</code> наследуется от <code>areto/db/ActiveRecord</code>.
+          Он отвечает за интерфейс аутентификации пользователя, а также за сохранение модели в базе данных.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>В методе <code>getConstants</code> определяются статичные свойства класса.</p>
+        <ul>
+          <li><code>TABLE</code> - название таблицы, в которую сохраняется модель.</li>
+          <li><code>ATTRS</code> - атрибуты модели, которые сохраняются в базу данных.
+            В качестве идентификатора используется атрибут <code>_id</code>,
+            который по умолчанию автоматически создается в MongoDB для каждой новой записи.
+          </li>
+        </ul>
+        <p>
+          Статичные свойства доступны как через сам класса, так и его экземпляр:
+          <code>User.TABLE === (new User).TABLE === (new User).constructor.TABLE</code>.
+          Для инициализации статичных свойств используется метод <code>init</code>, который
+          вызывается сразу после определения класса. Аргументом ему передается значение текущего
+          файла-модуля Node.js: <code>module.exports.init(module)</code>.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>findIdentity</code> находит в базе данных запись
+          по указанному <code>id</code> и <code>status === 'active'</code>.
+          Это необходимо при поиске идентифицированного пользователя по <code>id</code>, хранящемуся в сессии.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>init</code> вызывается сразу после создания модели.
+          В нем проводится инициализация начальных значений атрибутов.
+          При переопределении <code>init</code> для корректной работы класса необходимо вызывать
+          родительский метод <code>super.init</code>.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>getTitle</code> отдает название модели для отображения в различных случаях.
+          По умолчанию используется <code>id</code>.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>Вспомогательные методы <code>isActive, isBanned</code> для проверки текущего статуса пользователя.</p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>getAssignments</code> возвращает роль пользователя, хранящуюся в атрибуте <code>role</code>,
+          что необходимо для авторизации доступа к ресурсам блога.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>beforeSave</code> вызывается перед сохранением модели.
+          При переопределении необходимо вызывать родительский метод.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          Последняя пара методов отвечают за работу с паролем пользователя.
+          Для этого используется вспомогательный класс <code>areto/helpers/Security</code>,
+          который подключается после инициализации <code>User</code>.
+          В базе данных сохраняется только хэш пароля, полученный алгоритмом <b>sha1</b>.
+        </p>
+        <p class="filename">model/User.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

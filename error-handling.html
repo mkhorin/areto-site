@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error handling - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Error handling</h1>
+        <p>
+          Enter in your browser <code>http://localhost:3000/bla-bla-bla</code>
+          or change value in the <code>this.render("index"')</code> line on a non-existent template.
+          In each case, you will see how the server reacts to errors.
+        </p>
+        <img class="image-view" src="images/blog/f-error-400.png" alt="Error page 400">
+        <h4>Capture errors</h4>
+        <p>
+          To intercept and handle exceptions, add a configuration section containing the controller
+          (by default <code>DefaultController</code>) and an action (by default <code>error</code>).
+          These parameters provide error handling.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <h4>Action on error</h4>
+        <p>Create <code>actionError</code> method in controller. It will be called to handle errors.</p>
+        <p class="filename">controller/DefaultController.js</p>
+        <pre class="code"></pre>
+        <h4>Error views</h4>
+        <p>Create templates for error status (<code>403, 404, 500</code>). They will be displayed to user.</p>
+        <p class="filename">view/template/default/403.ejs</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="images/blog/f-error-404.png" alt="Error page 404">
+        <p class="filename">view/template/default/404.ejs</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="images/blog/f-error-500.png" alt="Error page 500">
+        <p class="filename">view/template/default/500.ejs</p>
+        <pre class="code"></pre>
+        <p>Now repeat the example from the beginning of the chapter and see how to change the server's response.</p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

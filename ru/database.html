@@ -1,0 +1,58 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>База данных - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>База данных</h1>
+        <p>
+          В качестве базы данных будем использовать noSQL СУБД MongoDB.
+          Преимуществом MongoDB являются отсутствие необходимости заранее создавать
+          таблицы и тесная интеграция формата с JavaScript.
+        </p>
+        <p>
+          В дальнейшем подразумевается, что СУБД доступно на вашей системе по указанному ниже адресу.
+          Подробности установки и запуска MongoDB  можно найти на
+          <a href="http://mongodb.com" target="_blank">официальном сайте</a>.
+        </p>
+        <h4>Подключение</h4>
+        <p>
+          В конфигурации приложения добавьте компонент <code>db</code> и укажите адрес по которому доступна СУБД,
+          а также название базы данных и логин/пароль, если требуется.
+        </p>
+        <p class="filename">config/default.js</p>
+        <pre class="code"></pre>
+        <p>Перезапустите сервер и, если подключение прошло успешно, то увидите в логах строчку:</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ контроллер статьи - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Контроллер статей</h1>
+        <p>Класс <code>ArticleController</code> отвечает за действия с моделью статьи.</p>
+        <p class="filename">module/admin/controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="../images/blog/b-article.png" alt="Список статей">
+        <p>
+          Метод <code>actionIndex</code> выводит список статей с возможностью поиска и сортировки
+          по идентификатору, статусу и заголовку. Каждая статья извлекается вместе
+          со связанными моделями <code>author</code> и <code>mainPhoto</code>, которые необходимы
+          для представления статьи в списке.
+        </p>
+        <p class="filename">module/admin/controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="../images/blog/b-article-view-1.png" alt="Просмотр статьи">
+        <img class="image-view" src="../images/blog/b-article-view-2.png" alt="Просмотр статьи">
+        <p>
+          Метод <code>actionView</code> выводит объект статьи на просмотр.
+          Вместе с ним загружаются все связанные модели <code>author, photos, mainPhoto, tags</code>.
+          Из отношения <code>relComments</code>, через провайдер данных,
+          формируется постраничный список комментариев, относящихся к статье.
+        </p>
+        <p class="filename">module/admin/controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="../images/blog/b-article-create.png" alt="Создание статьи">
+        <p>
+          Метод <code>actionCreate</code> отвечает за действие по созданию новой статьи.
+          Атрибут <code>authorId</code>, отвечающий за автора статьи, устанавливается по
+          текущему пользователю.
+        </p>
+        <p class="filename">module/admin/controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+        <img class="image-view" src="../images/blog/b-article-update.png" alt="Редактирование статьи">
+        <p>
+          Метод <code>actionUpdate</code> отвечает за действие по редактированию статьи.
+          После того как статья найдена, проверяется разрешение для текущего пользователя.
+          В асинхронный метод <code>can</code> последним аргументом передаются параметры, используемые
+          для инициализации бизнес-правила доступа.
+        </p>
+        <p class="filename">module/admin/controllers/ArticleController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Article model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Article model</h1>
+        <p>
+          The <code>Article</code> class is a article model. Also it integrates other entities of the blog.
+        </p>
+        <img class="image-view" src="images/blog/f-article-view-1.png" alt="Article view">
+        <p>
+          The <code>ATTRS</code> property is not declared in the model of public section.
+          because all article's changes will be made in the admin module.
+          Add the name of table and string status IDs to the constants of class:
+        </p>
+        <ul>
+          <li><code>draft</code> - article is in edit mode and is not available in the public section of blog.</li>
+          <li><code>published</code> - article is available for viewing in the public section.</li>
+          <li><code>archived</code> - article withdrawn from publication.</li>
+        </ul>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>Model title corresponds to the article title.</p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>The following methods are required to check status.</p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Data query</h4>
+        <p>
+          The <code>findPublished</code> method returns a query that looks for all published articles.
+          Also data for <code>mainPhoto, tags</code> relations (see below) will be requested for each article.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>findBySearch</code> method extends the <code>findPublished</code> query.
+          A filter is used to search for specific text in article titles.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <h4>Model's relations</h4>
+        <p>
+          Methods prefixed by <code>rel</code> define the relations of the target model to others.
+          Each relation is set via a link that is described in the return <code>areto/db/ActiveQuery</code> query.
+        </p>
+        <p>
+          The <code>relAuthor</code> method finds the article author.
+          The <code>hasOne, hasMany</code> functions reflect a expected number of results.
+          In this case, one article can have one author only.
+        </p>
+        <p>
+          The first argument (<code>User</code>) defines the model class associated with article.
+          The second argument <code>[User.PK, 'authorId']</code> contains attributes that form links.
+          A primary key (<code>User.PK</code>) is used by user model.
+          The <code>authorId</code> attribute that stores the identity of author is used by article.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>relPhotos</code> method returns a query for all photos associated with article.
+          Article may have a lot of photos, so <code>hasMany</code> method is used.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The main photo displayed in a list of articles defined in <code>relMainPhoto</code> relation.
+          The <code>Article</code> class contains <code>mainPhotoId</code> attribute
+          that keeps a model ID of the <code>Photo</code> class.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>relComments</code> method defines comments, related to the article.
+          Additional filter by status allows only approved ones for the public section of the blog.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>relTags</code> method selects tags relating to article.
+          Each tag can be associated with multiple articles and each article can contain multiple tags.
+          This type of relations is called a "many to many". It uses a junction table <code>rel_article_tag</code>.
+        </p>
+        <p>
+          Link the <code>Tag</code> model with the junction table <code>tagId</code> field.
+          The first argument of <code>viaTable</code> contains the name of junction table.
+          The second argument binds the table <code>articleId</code> field to the <code>Article</code> model.
+        </p>
+        <p class="filename">model/Article.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

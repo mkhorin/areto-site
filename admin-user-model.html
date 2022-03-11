@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin user model - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Admin user model</h1>
+        <p>
+          In the admin module you can update a user created by a registration form and to create new ones.
+          A user class inherits from <code>User</code> of app frontend.
+        </p>
+        <img class="image-view" src="images/blog/b-user-view.png" alt="View user model">
+        <p>
+          User password is required to create a model and is optional for editing.
+          It provides validation scenarios assigned to rules when creating <code>{on: ['create']}</code>.
+          Thus, <code>password</code> attribute is mandatory only
+          with <code>['create'].includes(model.scenario)</code> condition.
+          If scenario for a rule is not specified, the rule will be applied in all cases.
+        </p>
+        <p>
+          The <code>Range</code> validator used for <code>status, role</code> attributes
+          to check a value belonging to a set.
+        </p>
+        <p class="filename">module/admin/model/User.js</p>
+        <pre class="code"></pre>
+        <p>
+          The <code>findBySearch</code> method searches for users whose name or email containing a given text.
+        </p>
+        <p class="filename">module/admin/model/User.js</p>
+        <pre class="code"></pre>
+        <p>The <code>relArticles</code> relation finds all articles per user.</p>
+        <p class="filename">module/admin/model/User.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

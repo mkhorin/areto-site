@@ -1,0 +1,73 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Форма входа - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Форма входа</h1>
+        <p>Форма входа принимает логин/пароль и ищет в базе соответствующую запись пользователя.</p>
+        <img class="image-view" src="../images/blog/f-auth-signin.png" alt="Форма входа пользователя">
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+        <p>Валидация формы необходима, чтобы фильтровать некорректные значения ввода.</p>
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>login</code> проверяет данные формы.
+          Если ошибок нет, то передает управление <code>checkUser</code> для поиска пользователя в базе.
+        </p>
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+        <p>
+          В методе <code>checkUser</code> пользователь ищется по уникальному логину, в роли которого выступает email.
+          Если пользователь с данным email существует, то будет создан экземпляр класса <code>User</code>.
+          Дальнейшие проверки пользователя осуществляют методы этого класса.
+        </p>
+        <p class="alert alert-warning">
+          Обратите внимание на одинаковый ответ сервера в случае не найденного логина и неправильного пароля.
+          Этим закрывается возможность для посторонних узнать существует ли данный логин в базе.
+        </p>
+        <p>
+          Помимо пароля проверяется статус учетной записи.
+          Если пользователь заблокирован, то сервер вернет соответствующее сообщение об ошибке входа.
+        </p>
+        <p>
+          После успешных проверок в методе <code>webuser.login</code> осуществляется привязка текущей пользовательской сессии
+          к найденному пользователю.
+          Если на форме был отмечен чекбокс rememberMe, то в куки броузера будет добавлена информация
+          для автоматического входа пользователя на указанный период.
+        </p>
+        <p class="filename">model/SignInForm.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>

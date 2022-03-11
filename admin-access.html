@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module access - Areto Adaptive Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Module access</h1>
+        <p>
+          The <code>areto/filters/AccessControl</code> filter is used in <code>Admin</code> class objects
+          to protect the Admin module from unauthorized access.
+          This filter based on rules defined in <code>rules</code> parameter.
+          Each rule element initializes <code>areto/filters/AccessRule</code> class object.
+        </p>
+        <p>
+          This <code>allow</code> property defines type of rules allowing (<code>true</code>)
+          or forbidding (<code>false</code>).
+          <code>Permissions</code> property contains an array of access right items that use this rule.
+          In addition to items in <code>rbac/items</code> file, there are two built-in roles:
+        </p>
+        <ul>
+          <li><code>?</code> - a guest (anonymous) user.</li>
+          <li><code>@</code> - a logged-on user.</li>
+        </ul>
+        <p class="filename">module/admin/module.js</p>
+        <pre class="code"></pre>
+        <p>
+          If a user is anonymous, the filter will redirect him to the login form.
+          If a user is logged and does not have access, then «Access Denied» message is displayed.
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/highlight/highlight.pack.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

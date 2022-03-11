@@ -1,0 +1,79 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ CRUD контроллер - Адаптивный фреймворк Areto</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-inverse navbar-target"></nav>
+
+  <article class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>CRUD контроллер</h1>
+        <p>
+          В модуле администрирования многие действия с объектами разных классов (просмотр,
+          редактирование, удаление) повторяются
+          и могут быть собраны в одном контроллере.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>actionCreate</code> отвечает за действие по созданию нового объекта класса,
+          полученного из <code>getModelClass</code>. При создании используется сценарий <code>create</code>,
+          по которому могут быть отфильтрованы правила валидации модели.
+        </p>
+        <p>
+          На GET-запрос рендерится пустая форма модели. На POST-запрос происходит загрузка значений атрибутов,
+          проверка и, в случае успеха, сохранение нового объекта.
+          Если валидация провалилась, то форма снова заполняется переданными значениями с отмеченными ошибками.
+          После сохранения происходит редирект на страницу, с которой привела ссылка на создание модели.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Действие <code>actionView</code> отображает объект.
+          В целевом контроллере метод может быть переопределен для загрузки вместе с моделью
+          связанных значений <code>relations</code>.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>actionUpdate</code> отличается от метода <code>actionCreate</code> только лишь сценарием валидации
+          и начальным поиском модели для редактирования.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+        <p>
+          Метод <code>actionDelete</code> удаляет модель, идентификатор которой передан в GET-параметре.
+          Если пришел ajax-запрос, то после удаления возвращается идентификатор удаленного объекта,
+          иначе происходит переадресация на предыдущую страницу.
+        </p>
+        <p class="filename">module/admin/component/CrudController.js</p>
+        <pre class="code"></pre>
+      </div>
+    </div>
+  </article>
+
+</div>
+<footer class="footer footer-inverse">
+  <div class="container mt20">
+    <p class="text-center">Copyright @ 2022 Maxim Khorin</p>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/highlight/highlight.pack.js"></script>
+<script src="../js/common-ru.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>
