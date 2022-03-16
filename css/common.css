@@ -365,9 +365,11 @@ p {
     color: #888;
     margin: 15px 0 5px;
 }
-
 .nav > li.nav-header > a:hover {
     background: transparent;
+}
+.nav .dark-btn {
+    background: rgba(0,0,0,0.2);
 }
 
 @media (max-width: 767px) {

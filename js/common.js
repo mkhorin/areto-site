@@ -23,7 +23,7 @@ jQuery('.navbar-target').append(`<div class="container">
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="${window.enLanguageLink || 'ru'}">${window.enLanguageLabel || 'RU'}</a></li>
+          <li><a class="dark-btn" href="${window.enLanguageLink || 'ru'}">${window.enLanguageLabel || 'RU'}</a></li>
         </ul>
       </div>
     </div>`);
@@ -1574,7 +1574,7 @@ const Photo = require('../model/Photo');`, `async actionCreate () {
             $(element).html(`<code>${escapeTags(items[index])}</code>`);
         });
     }
-    hljs.initHighlightingOnLoad();
+    window.hljs?.initHighlightingOnLoad();
 })(jQuery);
 
 // STEP CONTROL
